@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+	<persistence-unit name="VirtualGoodsPu" transaction-type="RESOURCE_LOCAL">
+		<description>Utilizado em produção em containers Web como o Glassfish</description>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:comp/env/jdbc/virtualgoods</non-jta-data-source>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.LA</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Parceiro</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Mensagem</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.MensagemResposta</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Usuario</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Sharecode</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Keycode</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.TipoCampanha</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Regra</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Campanha</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Transacao</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Historico</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Log</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.BillingRecordSuccess</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.BillingRecordFailure</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Operadora</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.BuyConfig</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.LoggerMessage</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.BuyingLimitExceed</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.WithoutCampaignMsg</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Config</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.DuplicatedMessage</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.VGFlow</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.OptionIn</class>
+		<class>br.com.supportcomm.virtualgoodscore.pojo.Voucher</class>
+	    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.ejb.cfgfile" value="META-INF/hibernate.cfg.xml" />
+		</properties>
+	</persistence-unit>
+
+	<!-- <persistence-unit name="BiPu_Update">
+		<description>PersistenceUnit usado para update</description>
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.com.supportcomm.bicore.pojo.Property</class>
+		<class>br.com.supportcomm.biadmin.pojo.AdminRole</class>
+	    <class>br.com.supportcomm.biadmin.pojo.AdminUser</class>
+	    <properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+			<property name="hibernate.connection.username" value="bi" />
+			<property name="hibernate.connection.password" value="biSENHA123" />
+			<property name="hibernate.connection.url" value="jdbc:postgresql://desenv1:5432/bi" />
+		</properties>
+	</persistence-unit> -->
+</persistence>

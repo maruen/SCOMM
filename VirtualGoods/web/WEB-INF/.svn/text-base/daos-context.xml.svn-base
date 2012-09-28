@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- DAOs -->
+	<bean id="usuarioDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.UsuarioJPADAO"/>
+	<bean id="msgDAO" 					class="br.com.supportcomm.virtualgoodscore.dao.jpa.MensagemJPADAO"/>
+	<bean id="msgRespostaDAO" 			class="br.com.supportcomm.virtualgoodscore.dao.jpa.MensagemRespostaJPADAO"/>
+	<bean id="laDAO" 					class="br.com.supportcomm.virtualgoodscore.dao.jpa.LAJPADAO"/>
+	<bean id="historicoDAO" 			class="br.com.supportcomm.virtualgoodscore.dao.jpa.HistoricoJPADAO"/>
+	<bean id="keycodeDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.KeycodeJPADAO"/>
+	<bean id="campanhaDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.CampanhaJPADAO"/>
+	<bean id="tipoCampanhaDAO" 			class="br.com.supportcomm.virtualgoodscore.dao.jpa.TipoCampanhaJPADAO"/>
+	<bean id="transacaoDAO" 			class="br.com.supportcomm.virtualgoodscore.dao.jpa.TransacaoJPADAO"/>
+	<bean id="parceiroDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.ParceiroJPADAO"/>
+	<bean id="shareDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.SharecodeJPADAO"/>
+	<bean id="regraDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.RegraJPADAO"/>
+	<bean id="operadoraDAO" 			class="br.com.supportcomm.virtualgoodscore.dao.jpa.OperadoraJPADAO"/>
+	<bean id="buyConfigDAO" 			class="br.com.supportcomm.virtualgoodscore.dao.jpa.BuyConfigJPADAO"/>
+	<bean id="billingRecordSuccessDAO" 	class="br.com.supportcomm.virtualgoodscore.dao.jpa.BillingRecordSuccessJPADAO"/>
+	<bean id="billingRecordFailureDAO" 	class="br.com.supportcomm.virtualgoodscore.dao.jpa.BillingRecordFailureJPADAO"/>
+	<bean id="loggerMessageDAO" 		class="br.com.supportcomm.virtualgoodscore.dao.jpa.LoggerMessageJPADAO"/>
+	<bean id="withoutCampaignMsgDAO" 	class="br.com.supportcomm.virtualgoodscore.dao.jpa.WithoutCampaignMsgJPADAO"/>
+	<bean id="buyingLimitExceedDAO" 	class="br.com.supportcomm.virtualgoodscore.dao.jpa.BuyingLimitExceedJPADAO"/>
+	<bean id="configDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.ConfigJPADAO"/>
+	<bean id="duplicatedMessageDAO" 	class="br.com.supportcomm.virtualgoodscore.dao.jpa.DuplicatedMessageJPADAO"/>
+	<bean id="vgFlowDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.VGFlowJPADAO"/>
+	<bean id="optionInDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.OptionInJPADAO"/>
+	<bean id="voucherDAO" 				class="br.com.supportcomm.virtualgoodscore.dao.jpa.VoucherJPADAO"/>
+	
+</beans>

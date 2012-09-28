@@ -1,0 +1,21 @@
+mail.smtp.host = 192.168.195.10
+mail.smtp.user.validation = true
+mail.smtp.user = plugo
+mail.smtp.pass = SuComm0909$$
+mail.smtp.remetente = virtualgoods@supportcomm.com.br
+mail.smtp.remetente.descricao = [Administrador VirtualGoods]
+
+hibernate.cache.configuration.file=ehcache.xml
+virtual.goods.url=http://localhost:8080/VirtualGoods
+
+processTransactionInterval=15
+processBillingInterval=15
+processTransactionResponseInterval=15
+processMTInterval=15
+processFlowCheckInterval=15
+executeJobsFromThisMachine=true
+
+delimitador=
+size.text.message=130
+proxy.server = proxy.dc1.supp.com.br
+proxy.port = 3128

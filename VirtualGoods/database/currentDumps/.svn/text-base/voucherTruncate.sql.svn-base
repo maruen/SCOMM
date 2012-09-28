@@ -1,0 +1,9 @@
+TRUNCATE TABLE billing_record_failure;
+TRUNCATE TABLE billing_record_success;
+TRUNCATE TABLE historico;
+TRUNCATE TABLE without_rule_msg;
+TRUNCATE TABLE buying_limit_exceed;
+TRUNCATE TABLE duplicated_message;
+DELETE   FROM  mensagem_resposta;
+DELETE   FROM  transacao;
+DELETE   FROM  mensagem;

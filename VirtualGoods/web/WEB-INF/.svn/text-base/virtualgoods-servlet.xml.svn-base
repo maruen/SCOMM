@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"	value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" 	value="/WEB-INF/jsp/" />
+		<property name="suffix" 	value="" />
+	</bean>
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order" value="1" />
+	</bean>
+
+	<!-- Trata exceções na execução das operações -->
+	<!-- <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="biadmin/failure.jsp" />
+		<property name="warnLogCategory" value="log4j.logger.br.com.supportcomm.biadmin.GeneralError" />
+	</bean> -->
+	
+	<!-- Controller para receber as requisições MO do Mercuri -->
+	<bean name="/smsmo" class="br.com.supportcomm.virtualgoods.services.controller.SMSMOController">
+		<property name="msgDAO" 					ref="msgDAO"/>
+		<property name="laDAO" 						ref="laDAO"/>
+		<property name="historicoDAO" 				ref="historicoDAO"/>
+		<property name="campanhaDAO" 				ref="campanhaDAO"/>
+		<property name="keycodeDAO" 				ref="keycodeDAO"/>
+		<property name="transacaoDAO" 				ref="transacaoDAO"/>
+		<property name="buyConfigDAO" 				ref="buyConfigDAO"/>
+		<property name="billingRecordSuccessDAO" 	ref="billingRecordSuccessDAO"/>
+		<property name="loggerMessageDAO" 			ref="loggerMessageDAO"/>
+		<property name="operadoraDAO" 				ref="operadoraDAO"/>
+		<property name="withoutCampaignMsgDAO" 		ref="withoutCampaignMsgDAO"/>
+		<property name="buyingLimitExceedDAO" 		ref="buyingLimitExceedDAO"/>
+		<property name="duplicatedMessageDAO" 		ref="duplicatedMessageDAO"/>
+		<property name="configDAO"			 		ref="configDAO"/>
+		<property name="optionInDAO"				ref="optionInDAO"/>
+		<property name="delimitador" 				value="${delimitador}"/>
+	</bean>
+	
+	<bean name="/processTransaction" class="br.com.supportcomm.virtualgoods.services.controller.ProcessTransactionController">
+		<property name="historicoDAO" 				ref="historicoDAO"/>
+		<property name="transacaoDAO" 				ref="transacaoDAO"/>
+		<property name="optionInDAO" 				ref="optionInDAO"/>
+	</bean>
+	
+	<bean name="/authorize" class="br.com.supportcomm.virtualgoods.services.controller.AuthorizeBillingController">
+		<property name="historicoDAO" 				ref="historicoDAO"/>
+		<property name="transacaoDAO" 				ref="transacaoDAO"/>
+	</bean>
+	
+	<bean name="/processBilling" class="br.com.supportcomm.virtualgoods.services.controller.ProcessBillingController">
+		<property name="historicoDAO" 				ref="historicoDAO"/>
+		<property name="transacaoDAO" 				ref="transacaoDAO"/>
+		<property name="billingRecordSuccessDAO" 	ref="billingRecordSuccessDAO"/>
+		<property name="billingRecordFailureDAO" 	ref="billingRecordFailureDAO"/>
+		<property name="voucherDAO" 				ref="voucherDAO"/>
+		<property name="billingPlatform" 			ref="billingPlatformMercuri"/>
+	</bean>
+	
+	<bean name="/processTransactionResponse" class="br.com.supportcomm.virtualgoods.services.controller.ProcessTransactionResponseController">
+		<property name="historicoDAO" 				ref="historicoDAO"/>
+		<property name="transacaoDAO" 				ref="transacaoDAO"/>
+		<property name="proxyServer" 				value="${proxy.server}" />
+		<property name="proxyPort" 					value="${proxy.port}" />
+	</bean>
+	
+	<bean name="/smsmt" class="br.com.supportcomm.virtualgoods.services.controller.SMSMTController">
+		<property name="msgRespostaDAO" 			ref="msgRespostaDAO"/>
+		<property name="historicoDAO" 				ref="historicoDAO"/>
+		<property name="transacaoDAO" 				ref="transacaoDAO"/>
+		<property name="billingRecordSuccessDAO" 	ref="billingRecordSuccessDAO"/>
+		<property name="billingRecordFailureDAO" 	ref="billingRecordFailureDAO"/>
+		<property name="withoutCampaignMsgDAO" 		ref="withoutCampaignMsgDAO"/>
+		<property name="buyingLimitExceedDAO" 		ref="buyingLimitExceedDAO"/>
+		<property name="buyConfigDAO" 				ref="buyConfigDAO"/>
+		<property name="configDAO" 					ref="configDAO"/>
+		<property name="duplicatedMessageDAO"		ref="duplicatedMessageDAO"/>
+		<property name="campanhaDAO"				ref="campanhaDAO"/>
+		<property name="optionInDAO"				ref="optionInDAO"/>
+		<property name="voucherDAO"					ref="voucherDAO"/>
+		<property name="connection" 				ref="mercuriConnection" />
+		<property name="sizeTextMessage" 			value="${size.text.message}" />
+	</bean>
+	
+	<bean name="/processFlowCheck" class="br.com.supportcomm.virtualgoods.services.controller.ProcessFlowCheckController">
+		<property name="historicoDAO" 				ref="historicoDAO"/>
+		<property name="transacaoDAO" 				ref="transacaoDAO"/>
+	</bean>
+	
+	
+	
+</beans>

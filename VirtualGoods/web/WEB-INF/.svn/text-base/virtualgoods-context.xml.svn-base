@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+				http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd
+				http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<import resource="appconfig-context.xml" />
+
+	<import resource="jpa-context.xml" />
+
+	<import resource="daos-context.xml" />
+	
+	<!-- <bean id="biFacade" class="br.com.supportcomm.bicore.FacadeImpl">
+	</bean>
+	
+	<bean id="propertyContext" class="br.com.supportcomm.bicore.PropertyContextImpl">
+		<property name="propertyDAO" ref="propertyDAO" />
+	</bean> 
+	
+	<bean id="emailSender" class="br.com.supportcomm.biadmin.util.EmailSender">
+		<property name="host" value="${mail.smtp.host}" />
+	</bean>
+
+	<bean id="adminUserInitializer" class="br.com.supportcomm.biadmin.AdminUserInitializer" init-method="start">
+		<property name="adminUserDAO" ref="adminUserDAO" />
+	</bean>-->
+	
+	<bean id="billingPlatformMercuri"
+		class="br.com.supportcomm.virtualgoodscore.billing.service.platform.mercuri.BillingPlatformMercuri">
+	</bean>
+	
+	<bean id="mercuriConnection"
+		class="br.com.supportcomm.virtualgoodscore.util.mercuri.mt.MercuriConnectionImpl">		
+	</bean>
+	
+	<bean id="beanProperties" class="br.com.supportcomm.virtualgoods.properties.BeanProperties">
+		<property name="virtualGoodsUrl" 					value="${virtual.goods.url}" />
+		<property name="processTransactionInterval" 		value="${processTransactionInterval}" />
+		<property name="processBillingInterval" 			value="${processBillingInterval}" />
+		<property name="processTransactionResponseInterval" value="${processTransactionResponseInterval}" />
+		<property name="processMTInterval" 					value="${processMTInterval}" />
+		<property name="processFlowCheckInterval" 			value="${processFlowCheckInterval}" />
+		<property name="executeJobsFromThisMachine" 		value="${executeJobsFromThisMachine}" />
+	</bean>
+	
+	<bean id="email" class="br.com.supportcomm.virtualgoods.mail.Email">
+		<property name="smtp" 			value="${mail.smtp.host}" />
+		<property name="user" 			value="${mail.smtp.user}" />
+		<property name="passwd" 		value="${mail.smtp.pass}" />
+		<property name="remetente" 		value="${mail.smtp.remetente}" />
+		<property name="desRemetente" 	value="${mail.smtp.remetente.descricao}" />
+	</bean>
+	
+	<bean id="templateEmail" class="br.com.supportcomm.virtualgoods.mail.TemplateEmail">
+		<property name="url" value="${virtual.goods.url}" />
+	</bean>
+</beans>

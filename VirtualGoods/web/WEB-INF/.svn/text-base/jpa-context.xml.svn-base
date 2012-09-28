@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+				http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.xsd
+				http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- Entity Manager do JPA - Controla os EntityBeans -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="${persistenceUnit}" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.EhCacheProvider
+				</prop>
+				<prop
+					key="hibernate.cache.provider_configuration_file_resource_path">
+					${hibernate.cache.configuration.file}
+				</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Permite a inclusão do entityManager com a anotação @PersistenceContext -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean
+		id="transactionManagerJPA"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<tx:annotation-driven
+		transaction-manager="transactionManagerJPA" />
+	<tx:advice
+		id="txAdviceJPA"
+		transaction-manager="transactionManagerJPA">
+		<tx:attributes>
+			<tx:method
+				name="*"
+				propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config proxy-target-class="false">
+		<aop:advisor
+			advice-ref="txAdviceJPA"
+			pointcut="execution(* br.com.supportcomm.virtualgoodscore.dao.*.*(..))" />
+		<!-- <aop:advisor
+			advice-ref="txAdviceJPA"
+			pointcut="execution(* br.com.supportcomm.biadmin.dao.*.*(..))" /> 
+		<aop:advisor
+			advice-ref="txAdviceJPA"
+			pointcut="execution(* br.com.supportcomm.biadmin.audience.*.*(..))" />-->
+	</aop:config>
+	
+</beans>

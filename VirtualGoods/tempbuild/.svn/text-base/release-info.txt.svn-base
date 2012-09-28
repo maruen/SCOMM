@@ -1,0 +1,10 @@
+#Ant properties
+#Tue Sep 27 17:57:48 BRT 2011
+package.builtby=fabio.brandao3
+package.date=27/09/2011 17\:57
+package.release=20110927175748
+package.svninfo.RELEASE=20110927175748
+package.svninfo.globalrev=exportado
+package.svninfo.svn='.'isnotaworkingcopy
+package.svninfo.workingcopy=true
+package.tstamp=20110927175748

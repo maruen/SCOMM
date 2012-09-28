@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="appender" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/var/supportcomm/virtualgoods/logs/bi.log"/>
+		<param name="Append" value="false"/>
+		<param name="maxFileSize" value="102400"/>
+		<param name="maxBackupIndex" value="5"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %c %x - %m%n"/>
+		</layout>
+	</appender>
+
+	<appender name="mail" class="org.apache.log4j.net.SMTPAppender">
+		<param name="SMTPHost" value="smtp.myservername.xx" />
+		<param name="From" value="email@fromemail.xx" />
+		<param name="To" value="toemail@toemail.xx" />
+		<param name="Subject" value="[LOG] ..." />
+		<param name="BufferSize" value="1" />
+		<param name="threshold" value="error" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{ABSOLUTE} %5p %c{1}:%L - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %c %x - %m%n"/>
+		</layout>
+	</appender>
+
+	<root>
+		<priority value ="debug" />
+		<appender-ref ref="ConsoleAppender"/>
+		<appender-ref ref="appender"/>
+	</root>
+</log4j:configuration> 
+

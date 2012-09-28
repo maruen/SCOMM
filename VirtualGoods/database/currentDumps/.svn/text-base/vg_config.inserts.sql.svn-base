@@ -1,0 +1,8 @@
+insert into vg_config (id, name, value, description, label) values (4, 'duplicated.check.interval', '10', 'time interval in seconds to consider a message duplicated or not', 'Intervalo de duplicadas');
+insert into vg_config (id, name, value, description, label) values (2, 'sms.fail.default', 'Houve uma falha e a sua compra nao foi realizada. Tente novamente mais tarde. ', 'mensagem enviada após falha no processo de compra', 'SMS em falha');
+insert into vg_config (id, name, value, description, label) values (3, 'invalid.command', 'Comando invalido.', 'message sent when the rule is not found', 'SMS de comando inválido');
+insert into vg_config (id, name, value, description, label) values (5, 'duplicated.check.message', 'Voce ja enviou mais de uma mensagem no intervalo de tempo permitido. scomm', 'Message to be sent back when  a message is considered duplicated', 'SMS de duplicadas');
+insert into vg_config (id, name, value, description, label) values (1, 'sms.success.default', 'Compra realizada com Sucesso com protocolo %p', 'mensagem enviada após sucesso em billing', 'SMS em sucesso');
+insert into vg_config (id, name, value, description, label) values (6, 'option.in.answer', 'SIM', 'Message of Double Option expected', 'Resposta Option In');
+insert into vg_config (id, name, value, description, label) values (7, 'sms.optionIn', 'Digite SIM para Realizar a compra %t + %i', 'Mensagem para resposta do option in', 'SMS Option In');
+insert into vg_config (id, name, value, description, label) values (8, 'sms.voucher', 'Seu voucher :  %v', 'Mensagem contendo código voucher', 'SMS Voucher');

@@ -1,0 +1,2 @@
+insert into tipo_campanha (id_tipo_campanha, cd_ativo, dt_alteracao, dt_criacao, nm_tipo_campanha, sg_tipo_campanha) values (1, 1, '2011-12-14 11:15:00', '2011-12-14 11:15:00', 'Freemium Games', 'Free');
+insert into tipo_campanha (id_tipo_campanha, cd_ativo, dt_alteracao, dt_criacao, nm_tipo_campanha, sg_tipo_campanha) values (4, 1, '2012-05-03 10:05:48', '2012-05-03 10:05:48', 'Armies ', 'Army');

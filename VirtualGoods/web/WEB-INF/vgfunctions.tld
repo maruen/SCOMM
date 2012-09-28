@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib>
+<tlibversion>1.0</tlibversion>
+<jspversion>1.1</jspversion>
+<shortname>vg</shortname>
+<info>VG Taglib</info>
+
+<tag>
+    <name>contains</name>
+    <tagclass>br.com.supportcomm.virtualgoods.taglibs.ContainsTag</tagclass>
+    <attribute>
+      <name>list</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+  	</attribute>
+    <attribute>
+      <name>item</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+  	</attribute>
+</tag>
+
+</taglib>

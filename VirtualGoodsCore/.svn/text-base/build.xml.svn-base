@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="VirtualGoodsCore Library" basedir="." default="help">
+
+	<!-- Arquivos de propriedades para build -->
+	<property file="build.properties" />
+
+	<!-- Variáveis -->
+	<property name="srcdir" value="src" />
+	<property name="testdir" value="test" />
+	<property name="builddir" value="tempbuild" />
+	<property name="distdir" value="dist" />
+	<property name="build.jar.name" value="VirtualGoodsCore.jar" />
+	<property name="compile.javac.source" value="0.1" />
+	<property name="compile.javac.target" value="0.1" />
+	
+	<!-- Classpath para compilação -->
+	<path id="classpath.compile">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="lib/log">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="lib/spring">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean" description="Limpa diretórios build e dist">
+		<delete failonerror="false" dir="${distdir}" />
+		<delete failonerror="false" dir="${builddir}" />
+	</target>
+
+	<target name="help" depends="" description="Mostra ajuda">
+		<echo>Texto de Ajuda</echo>
+	</target>
+
+	<target name="all" depends="clean, buildCore" description="Limpa build e constroi novamente">
+	</target>
+
+	<target name="buildCore" depends="compile, release-info" description="Constroi o pacote JAR">
+		<mkdir dir="${distdir}" />
+		<jar destfile="${distdir}/${build.jar.name}">
+			<fileset dir="${builddir}/classes" />
+			<metainf file="${builddir}/release-info.txt" />
+		</jar>
+	</target>
+
+	<target name="compile" description="Compila o código">
+		<mkdir dir="${builddir}/classes" />
+		<javac deprecation="true" srcdir="${srcdir}" destdir="${builddir}/classes" verbose="false" debug="on" fork="true">
+			<classpath refid="classpath.compile" />
+		</javac>
+		<copy todir="${builddir}/classes">
+			<fileset dir="${srcdir}">
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="release-info">
+		<tstamp>
+			<format property="package.date" pattern="dd/MM/yyyy HH:mm"/>
+			<format property="package.tstamp" pattern="yyyyMMddHHmmss"/>
+		</tstamp>
+
+		<!-- Get the name of the user who is building this package -->
+		<property name="package.builtby" value="${user.name}"/>
+
+		<!-- Test whether Subversion for command-line is installed -->
+		<exec executable="svnversion" outputproperty="package.svninfo.globalrev" failifexecutionfails="false" >
+			<arg line="."/>
+		</exec>
+		<fail unless="package.svninfo.globalrev" message="Subversion for command-line is not installed. Install it from http://subversion.tigris.org or contact your system adminstrator."/>
+
+		<!-- Check if you are in a working copy (you have checked out) -->
+		<condition property="package.svninfo.workingcopy">
+			<not>
+				<equals arg1="${package.svninfo.globalrev}" arg2="exported" casesensitive="false" trim="true"/>
+			</not>
+		</condition>
+		<fail unless="package.svninfo.workingcopy" message="Sorry, you are not in a working-copy of the repository. Please, make a checkout first."/>
+
+		<!-- Get detailed information about this working copy -->
+		<exec executable="svn" output="svninfo.tmp">
+			<env key="LANG" value="en.UTF-8"/>
+			<arg line="info ."/>
+		</exec>
+		
+		<replaceregexp flags="g" file="svninfo.tmp" match=" +" replace="" />
+		<replaceregexp byline="true" file="svninfo.tmp" match="^URL:(.+/[^/]*svn[^/]*/.+/tags/([^/]+).*)" replace="package.svninfo.URL=\1${line.separator}package.svninfo.RELEASE=\2"/>
+		<replaceregexp byline="true" file="svninfo.tmp" match="^URL:.+/[^/]*svn[^/]*/(.+)$" replace="package.svninfo.URL=\1"/>
+		<replaceregexp byline="true" file="svninfo.tmp" match="^([^:=]+):(.+)$" replace="package.svninfo.\1=\2" />
+		<property file="svninfo.tmp"/>
+		<delete file="svninfo.tmp" />
+		
+		<!-- This property is only set if you are not in a TAG -->
+		<property name="package.svninfo.RELEASE" value="dev_${package.tstamp}"/>
+
+		<echo message="Building package for release ${package.svninfo.RELEASE} at ${package.svninfo.URL}"/>
+		<echo message="Global revision is ${package.svninfo.globalrev}"/>
+		<property name="package.release" value="${package.svninfo.RELEASE}"/>
+		<echoproperties prefix="package" destfile="${builddir}/release-info.txt" format="text"/>
+	</target>
+
+</project>

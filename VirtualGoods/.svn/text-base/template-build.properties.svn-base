@@ -1,0 +1,5 @@
+# Este arquivo é somente um exemplo de como configurar o build do projeto VirtualGoods
+# Caso deseje mudar as definições padrão abaixo, copie este arquivo com o nome build.properties e altere as propriedades.
+
+# Caminho base para o código do projeto VirtualGoodsCore (diretório code).
+virtualgoodscore.home=../VirtualGoodsCore

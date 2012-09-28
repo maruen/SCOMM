@@ -1,0 +1,20 @@
+#Fri Feb 24 10:28:07 BRST 2012
+eclipse.preferences.version=1
+encoding//web/WEB-INF/jsp/index/index.jsp=UTF-8
+encoding//web/WEB-INF/jsp/keycode/alterar.jsp=UTF-8
+encoding//web/WEB-INF/jsp/la/alterar.jsp=UTF-8
+encoding//web/WEB-INF/jsp/la/form.jsp=UTF-8
+encoding//web/WEB-INF/jsp/la/list.jsp=UTF-8
+encoding//web/WEB-INF/jsp/parceiro/alterar.jsp=UTF-8
+encoding//web/WEB-INF/jsp/sharecode/alterar.jsp=UTF-8
+encoding//web/WEB-INF/jsp/tipoCampanha/alterar.jsp=UTF-8
+encoding//web/WEB-INF/jsp/usuario/alterar.jsp=UTF-8
+encoding//web/WEB-INF/jsp/usuario/alterarSenha.jsp=UTF-8
+encoding//web/WEB-INF/jsp/usuario/form.jsp=UTF-8
+encoding//web/WEB-INF/jsp/usuario/list.jsp=UTF-8
+encoding//web/css/bootstrap.css=UTF-8
+encoding//web/formUsuario.jsp=UTF-8
+encoding//web/header.jsp=UTF-8
+encoding//web/js/bootstrap-dropdown.js=UTF-8
+encoding//web/menu.jsp=UTF-8
+encoding/<project>=UTF-8

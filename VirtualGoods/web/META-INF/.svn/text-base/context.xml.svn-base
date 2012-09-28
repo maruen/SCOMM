@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/VirtualGoods">
+  <Valve className="org.apache.catalina.valves.AccessLogValve" fileDateFormat="yyyy-MM-dd" pattern="%h %l %u %t &quot;%r&quot; %s %b &quot;%{Referer}i&quot; &quot;%{User-Agent}i&quot; Time=%D mS" prefix="VirtualGoods" suffix=".txt"/>
+  <!-- Link para o Datasource do Bi cadastrado no Glassfish -->
+  <ResourceLink global="jdbc/virtualgoods" name="jdbc/virtualgoods" type="javax.sql.DataSource"/>
+  <!-- Realm usado na autenticação dos usuários -->
+  <!-- <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/virtualgoods" digest="MD5" localDataSource="true" roleNameCol="id_role" userCredCol="user_password" userNameCol="user_login" userRoleTable="admin_user" userTable="admin_user"/> -->
+</Context>

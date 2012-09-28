@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:///virtualgoods.properties</value>
+				<value>file:///var/supportcomm/virtualgoods/config/virtualgoods.properties</value>
+			</list>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="hibernate.cache.configuration.file">
+					file:///var/supportcomm/virtualgoods/config/ehcache.xml
+				</prop>
+				<prop key="persistenceUnit">VirtualGoodsPu</prop>
+			</props>
+		</property>
+	</bean>
+</beans>
